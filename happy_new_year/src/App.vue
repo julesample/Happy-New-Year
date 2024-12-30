@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { Fireworks } from 'fireworks-js'
+import DigitalTimer from './components/DigitalTimer.vue'
 
 const fireworksCanvas = ref(null)
 const audioPlayer = ref(null)
@@ -96,15 +97,20 @@ const toggleAudio = () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-900 flex flex-col items-center justify-center relative overflow-hidden">
-    <h1 class="text-6xl font-bold text-white mb-6 animate-pulse">HAPPY NEW YEAR EBRIWAN</h1>
-    <div class="mb-4">
-      <button
-        @click="toggleAudio"
-        class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-300"
-      >
-        {{ isMuted ? 'Unmute Audio' : 'Mute Audio' }}
-      </button>
+  <div class="min-h-screen bg-black flex flex-col items-center justify-center relative overflow-hidden">
+    <div class="z-10 text-center">
+      <h1 class="text-6xl md:text-8xl font-bold text-white mb-6 animate-pulse">
+        HAPPY NEW YEAR EBRIWAN
+      </h1>
+      <DigitalTimer class="mb-6" />
+      <div class="mb-4">
+        <button
+          @click="toggleAudio"
+          class="px-6 py-3 bg-green-500 text-white text-lg rounded-full hover:bg-green-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50"
+        >
+          {{ isMuted ? 'Unmute Audio' : 'Mute Audio' }}
+        </button>
+      </div>
     </div>
     <canvas ref="fireworksCanvas" class="w-full h-full absolute top-0 left-0 z-0"></canvas>
     <audio ref="audioPlayer" loop>
